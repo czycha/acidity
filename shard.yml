@@ -1,0 +1,18 @@
+name: acidity
+version: 0.1.0
+
+authors:
+  - James Anthony Bruno <j.bruno.che@gmail.com>
+
+targets:
+  acidity:
+    main: src/acidity.cr
+
+dependencies:
+  stumpy_png:
+    github: l3kn/stumpy_png
+    version: "~> 4.1.1"
+
+crystal: 0.23.0
+
+license: MIT
