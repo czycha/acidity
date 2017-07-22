@@ -30,16 +30,16 @@ end
 ##
 # Converts int format to StumpyPNG's RGBA format.
 def int_to_rgba(i)
-  r = ((i >> 24) & 0xFF).to_u16
-  g = ((i >> 16) & 0xFF).to_u16
-  b = ((i >> 8) & 0xFF).to_u16
-  a = (i & 0xFF).to_u16
+  r = UInt16.new((i >> 24) & 0xFF)
+  g = UInt16.new((i >> 16) & 0xFF)
+  b = UInt16.new((i >> 8) & 0xFF)
+  a = UInt16.new(i & 0xFF)
   return RGBA.from_rgba8(r, g, b, a)
 end
 
 input = StumpyPNG.read(ARGV[0])
 w, h = input.width, input.height
-int_canvas = Array(UInt64).new(w * h, (0).to_u64)
+int_canvas = Array(UInt64).new(w * h, UInt64.new(0))
 output = Canvas.new(w, h)
 
 # Precompute int values for pixels
