@@ -51,19 +51,19 @@ end
 
 (0...h).each do |y|
   (0...w).each do |x|
-    pxl = int_canvas[y * w + x]
+    pxl = UInt64.new(0)
     count = 0
     ((x - radius)..(x + radius)).each do |xi|
       if xi < w && xi >= 0
         ((y - radius)..(y + radius)).each do |yi|
-          if yi < h && yi >= 0 && (yi != y && xi != x)
+          if yi < h && yi >= 0
             pxl += int_canvas[yi * w + xi]
             count += 1
           end
         end
       end
     end
-    color = (pxl / count) | 255
+    color = (pxl / count) | (int_canvas[y * w + x] & 0xFF)
     output[x, y] = int_to_rgba(color)
   end
 end
