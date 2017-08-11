@@ -20,6 +20,13 @@ module Acidity
     return RGBA.from_rgba8(r, g, b, a)
   end
 
+  def int_to_rgba(i, a)
+    r = UInt16.new((i >> 24) & 0xFF)
+    g = UInt16.new((i >> 16) & 0xFF)
+    b = UInt16.new((i >> 8) & 0xFF)
+    return RGBA.from_rgba8(r, g, b, a)
+  end
+
   # Create an aciditic image directly from a Stumpy Canvas.
   #
   # radius is used in computation. General rule: larger radius is more time, but larger bands of acidity
@@ -52,9 +59,8 @@ module Acidity
             end
           end
         end
-        # Average pixel color, but retain original opacity
-        color = (sum / count) | (int_canvas[y * w + x] & 0xFF)
-        output[x, y] = int_to_rgba color
+        color = int_to_rgba(sum / count, input[x, y].a)
+        output[x, y] = color
       end
     end
     return output
