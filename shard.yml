@@ -1,12 +1,12 @@
 name: acidity
-version: 0.3.0
+version: 1.0.0
 
 authors:
   - James Anthony Bruno <j.bruno.che@gmail.com>
 
 targets:
   acidity:
-    main: src/acidity.cr
+    main: src/cli.cr
 
 dependencies:
   stumpy_png:
