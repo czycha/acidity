@@ -3,3 +3,4 @@
 /bin/
 /.shards/
 shard.lock
+.DS_Store

@@ -50,13 +50,11 @@ module Acidity
         count = 0   # How many pixels represented in the pxl sum
         # Loop through (2 * radius + 1) x (2 * radius + 1) square, centered on (x, y)
         ((x - radius)..(x + radius)).each do |xi|
-          if xi < w && xi >= 0
-            ((y - radius)..(y + radius)).each do |yi|
-              if yi < h && yi >= 0
-                sum += int_canvas[yi * w + xi]
-                count += 1
-              end
-            end
+          next unless xi < w && xi >= 0
+          ((y - radius)..(y + radius)).each do |yi|
+            next unless yi < h && yi >= 0
+            sum += int_canvas[yi * w + xi]
+            count += 1
           end
         end
         color = int_to_rgba(sum / count, input[x, y].a)
