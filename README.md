@@ -20,7 +20,7 @@ acidity input.png output.png [radius]
 
 ### Notes
 
-- [Currently only supports loading and writing to PNGs.](https://github.com/czycha/acidity/issues/3)
+- [Currently only supports loading and writing to PNGs.](https://github.com/czycha/acidity/issues/3) Refer to the [Processing port](https://github.com/czycha/acidity-processing) for more image format options.
 - Radius is an optional, positive, non-zero integer. Defaults to 9. Larger numbers take longer, but have more interesting results.
 
 ## Contributors
